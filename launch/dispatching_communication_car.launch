@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+<!-- 发布 base_link 到 camera_link 的静态变换 -->
+  <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_map"
+        args="0.5 0.0 0.2 0.0 0.0 0.0 1.0 base_link map" />
+  <rosparam command="load" file="$(find dispatching_communication_car)/config/params.yaml"/>
+  <node pkg="dispatching_communication_car" type="dispatching_communication_car.py" name="dispatching_communication_car" respawn="false"  output="screen" >
+  </node>
+</launch>
